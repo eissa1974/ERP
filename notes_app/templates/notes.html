@@ -1,0 +1,43 @@
+{% extends "base.html"	%}
+{% load static %}
+{% block body %}
+{% csrf_token %}
+
+			<section class="blog-area section-gap">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-8 pb-30 header-text">
+							<h1>Our Recent Notes </h1>
+							<p>
+								Create , Update , Share Our Note With Others
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						{% for note22 in all_notes %}
+							<div class="single-blog col-lg-4 col-md-4">
+
+								{% if note22.img %}
+									<img class="f-img img-fluid mx-auto" src="{{note22.img.url}}" alt="">
+								{% endif %}
+							<h4>
+								<a href="{% url 'notes66:note_detail55' note22.slug  %}">{{note22.title}}</a>
+							</h4>
+							<p>
+								{{note22.content|truncatewords:'10'}}
+							</p>
+							<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+								<div>
+									<img class="img-fluid" src="{% static 'home-static/img/user.png' %}" alt="">
+									<a href="#"><span>{{note22.user.username}}</span></a>
+								</div>
+								<div class="meta">
+									{{note22.created|date:"j M"}}
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+{% endblock %}

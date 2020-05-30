@@ -1,0 +1,8 @@
+<h1>{{note_detail}}</h1>
+
+<hr>
+  <a href="{% url 'notes66:note_edit55' note_detail.slug %}">update note details </a>
+<hr>
+<h4>{{note_detail.content|Safe}}</h4>
+<h5>{{note_detail.created}}</h5>
+<h5>{{note_detail.slug}}</h5>

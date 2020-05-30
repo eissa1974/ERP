@@ -16,8 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include , path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('notes/', include('notes_app.urls')),
-    path('', include('notes_app.urls')),
-]
+    path('notes/', include('notes_app.urls' , namespace='notes66')),
+    path('userdata/', include('userdata.urls' , namespace='userdata66')),
+
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
+
+#] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

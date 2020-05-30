@@ -1,0 +1,26 @@
+{% extends "base.html"	%}
+{% load static %}
+{% block body %}
+<div class="container">
+  <center>
+      <img src="{{profile.img.url}}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+      <h3 class="media-heading">{{profile.user}}</h3>
+      <span><strong>Skills: </strong></span>
+          <span class="label label-warning">HTML5/CSS</span>
+          <span class="label label-info">Adobe CS 5.5</span>
+          <span class="label label-info">Microsoft Office</span>
+          <span class="label label-success">Windows XP, Vista, 7</span>
+      </center>
+      <hr>
+      <center>
+      <p class="text-left"><strong>Bio: </strong><br>
+          {{profile.bio}}</p>
+      <br>
+  </center>
+  <div class="row">
+    <a href="{% url 'userdata66:edit_profile' profile.slug %}"> Edit Profile</a>
+    <a href="{% url 'userdata66:change_password' profile.slug %}">Change Password</a>
+
+  </div>
+</div>
+{% endblock %}
